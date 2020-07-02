@@ -2,7 +2,9 @@
 SELECT * FROM course WHERE id=1
 
 # 2.Query the presence of both 1 and 2 courses
-SELECT * FROM course WHERE id=1 OR id=2
+SELECT a.* FROM course a,course b WHERE a.id=1 AND b.id=2
+UNION
+SELECT b.* FROM course a,course b WHERE a.id=1 AND b.id=2
 
 # 3.Query the student number and student name and average score of students whose average score is 60 or higher.
 SELECT a.id,NAME,AVG(score) FROM student a,student_course b WHERE a.id=b.studentId GROUP BY a.id,NAME HAVING AVG(score)>=60
